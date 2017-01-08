@@ -1,3 +1,9 @@
+/* Cracking the Coding Interview
+ * Problem 1.1
+ * Elijah Verdoorn
+ * 1/7/17
+ */
+
 #include <map>
 #include <string>
 #include <iostream>
