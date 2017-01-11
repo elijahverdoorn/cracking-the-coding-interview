@@ -12,7 +12,7 @@ class Node
 {
 	private:
 		T data;
-		Node* next;
+		Node* next = NULL;
 	public:
 		T getData()
 		{
@@ -37,23 +37,30 @@ class Node
 
 TEST_CASE("Node functions as expected", "[Node]")
 {
-	Node<int> n;
-	n.setData(1);
-	Node<int> n2;
+	Node<int> n1, n2, n3;
+	n1.setData(1);
 	n2.setData(2);
-	n.setNext(&n);
+	n3.setData(3);
 
+	n1.setNext(&n2);
+	n2.setNext(&n3);
+	
 	SECTION("Setting and getting links works properly")
 	{
-		REQUIRE(n.getNext() == &n2);
-		REQUIRE(n2.getNext() == NULL);
+		REQUIRE(n1.getNext() == &n2);
 	}
 
 	SECTION("Setting and getting data works properly")
 	{
-		REQUIRE(n.getData() == 1);
+		REQUIRE(n1.getData() == 1);
 		REQUIRE(n2.getData() == 2);
-		REQUIRE(n.getNext()->getData() == 2);
+		REQUIRE(n1.getNext()->getData() == 2);
+	}
+
+	SECTION("Working with node 3 works properly")
+	{
+		REQUIRE(n3.getData() == 3);
+		REQUIRE(n3.getNext() == NULL);
 	}
 }
 
