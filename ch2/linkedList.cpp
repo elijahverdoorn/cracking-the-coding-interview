@@ -4,8 +4,10 @@
  * 1/11/17
 */
 
-#define CATCH_CONFIG_MAIN
-#include "../catch.hpp"
+#ifndef _NODE_
+#define _NODE_
+
+#include <stddef.h>
 
 template <class T>
 class Node
@@ -34,33 +36,20 @@ class Node
 			data = d;
 		}
 };
+#endif
 
-TEST_CASE("Node functions as expected", "[Node]")
+#ifndef _LINKEDLIST_
+#define _LINKEDLIST_
+
+template<class T>
+class LinkedList
 {
-	Node<int> n1, n2, n3;
-	n1.setData(1);
-	n2.setData(2);
-	n3.setData(3);
-
-	n1.setNext(&n2);
-	n2.setNext(&n3);
-	
-	SECTION("Setting and getting links works properly")
-	{
-		REQUIRE(n1.getNext() == &n2);
-	}
-
-	SECTION("Setting and getting data works properly")
-	{
-		REQUIRE(n1.getData() == 1);
-		REQUIRE(n2.getData() == 2);
-		REQUIRE(n1.getNext()->getData() == 2);
-	}
-
-	SECTION("Working with node 3 works properly")
-	{
-		REQUIRE(n3.getData() == 3);
-		REQUIRE(n3.getNext() == NULL);
-	}
-}
-
+	private:
+		Node<T>* headNode;
+	public:
+		Node<T>* getHeadNode()
+		{
+			return headNode;
+		}
+};
+#endif
