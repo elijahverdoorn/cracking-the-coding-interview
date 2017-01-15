@@ -27,26 +27,6 @@ void removeDups(Node<T>* n)
 		}
 		n = n->getNext();
 	}
-
-}
-
-/* printList()
- * This is kinda messy, but it gets the job done
- */
-template <class T>
-void printList(Node<T>* n)
-{
-	if (n->getNext() == nullptr)
-	{
-		std::cout << n->getData() << std::endl;
-		return;
-	}
-	do {
-		std::cout << n->getData() << " ";
-		n = n->getNext();
-	} while (n->getNext() != nullptr);
-	std::cout << n->getData() << std::endl;
-	return;
 }
 
 int main()
