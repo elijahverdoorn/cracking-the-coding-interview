@@ -8,6 +8,7 @@
 #define _NODE_
 
 #include <stddef.h>
+#include <iostream>
 
 template <class T>
 class Node
