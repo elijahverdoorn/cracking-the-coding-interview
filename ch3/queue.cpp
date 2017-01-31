@@ -69,7 +69,8 @@ class Queue
 		{
 			T temp = last->data;
 			last = last->prev;
-			last->next = NULL;
+			if (last != NULL)
+				last->next = NULL;
 			return temp;
 		}
 
